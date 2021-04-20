@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="author: coldog">
+  <title>Test Slide</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Test Slide</h1>
+  <p class="author">author: coldog</p>
+  <p class="date">e-mail: coldog@126.com</p>
+</section>
+
+<section>
+<section id="section-i" class="title-slide slide level1">
+<h1>Section I</h1>
+
+</section>
+<section id="part-i-i" class="slide level2">
+<h2>Part I-i</h2>
+<p>something special…</p>
+<div class="fragment">
+<p>This is a PAUSE…</p>
+</div>
+</section>
+<section id="part-i-ii" class="slide level2">
+<h2>Part I-ii</h2>
+<p>Hi!</p>
+</section></section>
+<section>
+<section id="section-ii" class="title-slide slide level1">
+<h1>Section II</h1>
+
+</section>
+<section id="part-ii-i" class="slide level2">
+<h2>Part II-i</h2>
+<p>something strange…</p>
+</section>
+<section id="part-ii-ii" class="slide level2">
+<h2>Part II-ii</h2>
+<p>Hello!</p>
+</section></section>
+<section>
+<section id="section-iii" class="title-slide slide level1">
+<h1>Section III</h1>
+
+</section>
+<section id="part-iii-i" class="slide level2">
+<h2>Part III-i</h2>
+<p>something else…</p>
+</section>
+<section id="part-iii-ii" class="slide level2">
+<h2>Part III-ii</h2>
+<p>Hello, world!</p>
+</section></section>
+<section id="final" class="title-slide slide level1">
+<h1>Final!</h1>
+
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Push each slide change to the browser history
+        history: false,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
