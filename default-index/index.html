@@ -169,7 +169,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-04-21 20:59:43 / Modified: 21:33:06" itemprop="dateCreated datePublished" datetime="2021-04-21T20:59:43+08:00">2021-04-21</time>
+              <time title="Created: 2021-04-21 20:59:43 / Modified: 21:41:37" itemprop="dateCreated datePublished" datetime="2021-04-21T20:59:43+08:00">2021-04-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -196,15 +196,15 @@
 <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
 <li><p><strong>在根目录的<code>source</code>目录下，新建一个<code>index.md</code>文档</strong></p>
 <p> 在根目录的<code>source</code>目录下，新建一个名为<code>index.md</code>文档，这个<code>source</code>目录下的<code>index.md</code>文档即是我们自定义的主页。在文档中做出的任何修改均会体现在自定义主页中。</p>
-<p> <img src="/assets/source-index.png/"></p>
+<p> <img src="/assets/source-index.png"></p>
 </li>
 <li><p><strong>修改根目录下的<code>_config.yml</code>文件的<code>index_generator</code>项</strong></p>
 <p> 打开根目录下的<code>_config.yml</code>文件，将<code>index_generator</code>项下的<code>path</code>项的值修改为一个无效值，例如：我将这一项修改为了<code>default-index</code>。目的是使Hexo框架的默认主页指向一个无效值。</p>
-<p> <img src="/assets/default-index.png/"></p>
+<p> <img src="/assets/default-index.png"></p>
 </li>
 <li><p><strong>修改NexT主题的配置文件（<code>themes/next/_config.yml</code>文件）的<code>Home</code>菜单指向的链接</strong></p>
 <p> 打开<code>themes/next/</code>目录下的<code>_config.yml</code>文件，将<code>menu</code>项下的<code>home</code>项的值修改为/ || fa fa-home。使得点击页面中的Home菜单时，可以返回自定义主页。</p>
-<p> <img src="/assets/menu-home.png/"></p>
+<p> <img src="/assets/menu-home.png"></p>
 </li>
 </ol>
 <h1 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h1><p><code>source</code>目录下新建的<code>index.md</code>文档将作为自定义的主页，因此，我们需要屏蔽掉系统默认的主页。屏蔽掉系统默认的主页的方法是修改<code>_config.yml</code>配置文件的<code>index_generator</code>项。</p>
