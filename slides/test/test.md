@@ -1,6 +1,6 @@
 % Test Slide
-% author: coldog
-% e-mail: coldog@126.com
+% author: liu
+% e-mail: liuyuxuanchn@126.com
 
 # Section I
 
