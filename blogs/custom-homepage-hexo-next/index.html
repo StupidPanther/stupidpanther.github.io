@@ -19,18 +19,18 @@
     var CONFIG = {"hostname":"liu-yx.cn","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"hide","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="问题在使用Hexo的Next主题时，默认主页是数篇博客的摘要。想要修改主页的内容（例如给出网站的介绍等），需要进行自定义配置。 步骤 在根目录的source目录下，新建一个index.md文档  在根目录的source目录下，新建一个名为index.md文档，这个source目录下的index.md文档即是我们自定义的主页。在文档中做出的任何修改均会体现在自定义主页中。    修改根目录下的_co">
+  <meta name="description" content="问题在使用Hexo博客框架的Next主题时，默认主页是数篇博客的摘要。想要修改主页（也即首页）的内容（例如给出网站的介绍等），需要进行自定义配置。 步骤 在根目录的source目录下，新建一个index.md文档  在根目录的source目录下，新建一个名为index.md文档，这个source目录下的index.md文档即是我们自定义的主页。在文档中做出的任何修改均会体现在自定义主页中。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo-NexT主题自定义主页配置方法">
+<meta property="og:title" content="Hexo博客-NexT主题自定义主页配置方法">
 <meta property="og:url" content="https://liu-yx.cn/blogs/custom-homepage-hexo-next/index.html">
 <meta property="og:site_name" content="Stupidpanther&#39;s Blog">
-<meta property="og:description" content="问题在使用Hexo的Next主题时，默认主页是数篇博客的摘要。想要修改主页的内容（例如给出网站的介绍等），需要进行自定义配置。 步骤 在根目录的source目录下，新建一个index.md文档  在根目录的source目录下，新建一个名为index.md文档，这个source目录下的index.md文档即是我们自定义的主页。在文档中做出的任何修改均会体现在自定义主页中。    修改根目录下的_co">
+<meta property="og:description" content="问题在使用Hexo博客框架的Next主题时，默认主页是数篇博客的摘要。想要修改主页（也即首页）的内容（例如给出网站的介绍等），需要进行自定义配置。 步骤 在根目录的source目录下，新建一个index.md文档  在根目录的source目录下，新建一个名为index.md文档，这个source目录下的index.md文档即是我们自定义的主页。在文档中做出的任何修改均会体现在自定义主页中。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://liu-yx.cn/assets/source-index.png">
 <meta property="og:image" content="https://liu-yx.cn/assets/default-index.png">
 <meta property="og:image" content="https://liu-yx.cn/assets/menu-home.png">
 <meta property="article:published_time" content="2021-04-21T12:59:43.000Z">
-<meta property="article:modified_time" content="2021-04-21T15:02:27.651Z">
+<meta property="article:modified_time" content="2021-04-22T05:42:32.642Z">
 <meta property="article:author" content="stupidpanther">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://liu-yx.cn/assets/source-index.png">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>Hexo-NexT主题自定义主页配置方法 | Stupidpanther's Blog</title>
+  <title>Hexo博客-NexT主题自定义主页配置方法 | Stupidpanther's Blog</title>
   
 
 
@@ -166,7 +166,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hexo-NexT主题自定义主页配置方法
+          Hexo博客-NexT主题自定义主页配置方法
         </h1>
 
         <div class="post-meta">
@@ -175,10 +175,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-04-21 20:59:43 / Modified: 23:02:27" itemprop="dateCreated datePublished" datetime="2021-04-21T20:59:43+08:00">2021-04-21</time>
+              <time title="Created: 2021-04-21 20:59:43" itemprop="dateCreated datePublished" datetime="2021-04-21T20:59:43+08:00">2021-04-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-22 13:42:32" itemprop="dateModified" datetime="2021-04-22T13:42:32+08:00">2021-04-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -200,7 +206,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>在使用Hexo的Next主题时，默认主页是数篇博客的摘要。想要修改主页的内容（例如给出网站的介绍等），需要进行自定义配置。</p>
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>在使用Hexo博客框架的Next主题时，默认主页是数篇博客的摘要。想要修改主页（也即首页）的内容（例如给出网站的介绍等），需要进行自定义配置。</p>
 <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
 <li><p><strong>在根目录的<code>source</code>目录下，新建一个<code>index.md</code>文档</strong></p>
 <p> 在根目录的<code>source</code>目录下，新建一个名为<code>index.md</code>文档，这个<code>source</code>目录下的<code>index.md</code>文档即是我们自定义的主页。在文档中做出的任何修改均会体现在自定义主页中。</p>
@@ -221,7 +227,7 @@
 <p><strong>知乎主页：</strong> <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/liuyuxuan-cn">法华寺中班小屁孩 - 知乎</a></p>
 <p><strong>文章：</strong><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/366761432">Hexo-NexT主题自定义主页配置方法 - 知乎</a></p>
 <blockquote>
-<p>在使用Hexo的Next主题时，默认主页是数篇博客的摘要。想要修改主页的内容（例如给出网站的介绍等），需要进行自定义配置……</p>
+<p>在使用Hexo博客框架的Next主题时，默认主页是数篇博客的摘要。想要修改主页（也即首页）的内容（例如给出网站的介绍等），需要进行自定义配置……</p>
 </blockquote>
 <blockquote>
 <p><a href="/">StupidPanther</a> / <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/liuyuxuan-cn">法华寺中班小屁孩</a> @ 知乎 / <a target="_blank" rel="noopener" href="https://www.cnblogs.com/stupidpanther/">法华寺中班小屁孩</a> @ 博客园 / <a target="_blank" rel="noopener" href="https://segmentfault.com/u/stupidpanther">StupidPanther</a> @ 思否 是同一作者，他人请勿转载</p>
