@@ -2,7 +2,7 @@
 
 _username="$USERNAME,$HOSTNAME"
 _useremail=upload-PTS@liu-yx.cn
-_remoteurl=git@gitee.com:stupidpanther/public-temp-storage.git
+_remoteurl=https://gitee.com/stupidpanther/public-temp-storage.git
 _branchname="$USERNAME,$HOSTNAME,$PWD"
 _commitmessage="Commit by uploadPTS.sh, $USERNAME, $HOSTNAME, $PWD"
 
