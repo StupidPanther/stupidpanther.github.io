@@ -11,11 +11,11 @@ git init
 git config --local user.name ${_username}
 git config --local user.email ${_useremail}
 
-git remote add origin ${_remoteurl}
-git pull origin master --allow-unrelated-histories
+git remote add PTS ${_remoteurl}
+git pull PTS master --allow-unrelated-histories
 git checkout -b ${_branchname}
 
 git add .
 git commit -m "${_commitmessage}"
-git pull origin ${_branchname} --allow-unrelated-histories
-git push origin ${_branchname}
+git pull PTS ${_branchname} --allow-unrelated-histories
+git push PTS ${_branchname}
