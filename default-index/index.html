@@ -172,10 +172,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-03-25 21:11:36 / Modified: 21:20:07" itemprop="dateCreated datePublished" datetime="2022-03-25T21:11:36+08:00">2022-03-25</time>
+              <time title="Created: 2022-03-25 21:11:36" itemprop="dateCreated datePublished" datetime="2022-03-25T21:11:36+08:00">2022-03-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-03-28 19:38:33" itemprop="dateModified" datetime="2022-03-28T19:38:33+08:00">2022-03-28</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -214,6 +220,32 @@
 <li>llvm IR</li>
 <li>malloc时对堆区的建模(InstParser)</li>
 <li>指针相关验证的学术界方法(看论文)</li>
+</ul>
+<h2 id="2022-03-28"><a href="#2022-03-28" class="headerlink" title="2022-03-28"></a>2022-03-28</h2><p>TODO: 快整理一下！！！brick的main分支就包含如下bugs。。。<br>往期问题解答：</p>
+<ul>
+<li>int和float的表现不一致：minisat给出的结果不一致（BoundedVerifier:L285），后续线索中断。</li>
+<li>arrayIndex越界，这是一个bug！目前已知其存在于commit 31389c1中。</li>
+</ul>
+<p>预备向上问题报告：</p>
+<ul>
+<li>BVVerifier:L186的assert单位不一致吧，arrayIndex单位是sizeof(type)，memSize单位是byte。导致这个问题的bug可能原生存在于commit 31389c1。</li>
+<li>为什么int类型数组的测试样例总是报告minisat.solver.FALSE导致可以不进入BVVerifier的solver。</li>
+<li>brs1f.c验证时报告!=INTNUM的assert，是因为不想做malloc(变量)吗。</li>
+</ul>
+<p>遇到的问题和意向解决方法：</p>
+<ul>
+<li><p>确定从哪个分支开始编码：<br>  测试用例：</p>
+<pre><code>  brs1.c 观察assert !=INTNUM
+  test_case_brs1.c 观察assert ArrayIndex out of bound
+</code></pre>
+</li>
+<li><p>规避assert限制：<br>  取消编译优化</p>
+</li>
+</ul>
+<p>接下来的任务：</p>
+<ul>
+<li>reorderPath（在BoundedVerifier:L288被引用）是做什么用的</li>
+<li>solveSAT是基于路径遍历的吗</li>
 </ul>
 
       
