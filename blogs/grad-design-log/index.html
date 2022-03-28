@@ -27,7 +27,7 @@
 <meta property="og:description" content="2022-03-25完成 getArrayElementExpr() mkStoreConstraint() mkLoadConstraint() 的FP相关编码. 目前的问题:   assert(L179) fail : arrayIndex超标. 2个疑惑: 为什么index的单位似乎是byte, 而不是sizeof(float). 为什么index会越界. 测试样例int和float的表现不">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-25T13:11:36.000Z">
-<meta property="article:modified_time" content="2022-03-28T11:38:33.923Z">
+<meta property="article:modified_time" content="2022-03-28T12:54:42.181Z">
 <meta property="article:author" content="stupidpanther">
 <meta name="twitter:card" content="summary">
 
@@ -184,7 +184,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-28 19:38:33" itemprop="dateModified" datetime="2022-03-28T19:38:33+08:00">2022-03-28</time>
+                <time title="Modified: 2022-03-28 20:54:42" itemprop="dateModified" datetime="2022-03-28T20:54:42+08:00">2022-03-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -225,7 +225,7 @@
 <li>malloc时对堆区的建模(InstParser)</li>
 <li>指针相关验证的学术界方法(看论文)</li>
 </ul>
-<h2 id="2022-03-28"><a href="#2022-03-28" class="headerlink" title="2022-03-28"></a>2022-03-28</h2><p>TODO: 快整理一下！！！brick的main分支就包含如下bugs。。。<br>往期问题解答：</p>
+<h2 id="2022-03-28"><a href="#2022-03-28" class="headerlink" title="2022-03-28"></a>2022-03-28</h2><p>往期问题解答：</p>
 <ul>
 <li>int和float的表现不一致：minisat给出的结果不一致（BoundedVerifier:L285），后续线索中断。</li>
 <li>arrayIndex越界，这是一个bug！目前已知其存在于commit 31389c1中。</li>
@@ -245,11 +245,20 @@
 </li>
 <li><p>规避assert限制：<br>  取消编译优化</p>
 </li>
+<li><p>test_case_brs1_f-A.c 为什么会FAIL，理论上.ll：L71处的跳转不应实现<br>  那么，是否是cfg的path生成有问题？</p>
+</li>
+<li><p>为什么int类型数组的测试样例总是报告minisat.solver.FALSE，minisat.solve做了什么？</p>
+</li>
 </ul>
 <p>接下来的任务：</p>
 <ul>
+<li>再写几个测试样例（最好包含 FAIL 和 SUCCEED，样例test_case_brs1_f-B.c实现了触发assert ArrayIndex bound）</li>
+<li>malloc时对堆区的建模(InstParser)</li>
 <li>reorderPath（在BoundedVerifier:L288被引用）是做什么用的</li>
 <li>solveSAT是基于路径遍历的吗</li>
+<li>z3的表达式类型</li>
+<li>llvm IR</li>
+<li>指针相关验证的学术界方法(看论文)</li>
 </ul>
 
     </div>
