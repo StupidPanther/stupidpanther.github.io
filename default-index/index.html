@@ -180,7 +180,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-28 21:00:23" itemprop="dateModified" datetime="2022-03-28T21:00:23+08:00">2022-03-28</time>
+                <time title="Modified: 2022-03-29 19:41:35" itemprop="dateModified" datetime="2022-03-29T19:41:35+08:00">2022-03-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,9 +229,9 @@
 </ul>
 <p>预备向上问题报告：</p>
 <ul>
-<li>BVVerifier:L186的assert单位不一致吧，arrayIndex单位是sizeof(type)，memSize单位是byte。导致这个问题的bug可能原生存在于commit 31389c1。</li>
-<li>为什么int类型数组的测试样例总是报告minisat.solver.FALSE导致可以不进入BVVerifier的solver。</li>
-<li>brs1f.c验证时报告!=INTNUM的assert，是因为不想做malloc(变量)吗。</li>
+<li>BVVerifier:L186的assert单位不一致吧，arrayIndex单位是sizeof(type)，memSize单位是byte。导致这个问题的bug可能原生存在于commit 31389c1。（已报告）</li>
+<li>为什么int类型数组的测试样例总是报告minisat.solver.FALSE导致可以不进入BVVerifier的solver。（未报告，觉得意义不大）</li>
+<li>brs1f.c验证时报告!=INTNUM的assert，是因为不想做malloc(变量)吗。（已报告）</li>
 </ul>
 <p>遇到的问题和意向解决方法：</p>
 <ul>
@@ -239,23 +239,32 @@
 <pre><code>  brs1.c 观察assert !=INTNUM
   test_case_brs1.c 观察assert ArrayIndex out of bound
 </code></pre>
+<p>（已解决，最新分支，等待学长完成debug）</p>
 </li>
-<li><p>规避assert限制：<br>  取消编译优化</p>
+<li><p>规避assert限制：<br>  取消编译优化<br>（已解决，等待学长给找测试样例，因为旧的测试针对的是memmory safety，而需要的测试是数值计算相关的）</p>
 </li>
-<li><p>test_case_brs1_f-A.c 为什么会FAIL，理论上.ll：L71处的跳转不应实现<br>  那么，是否是cfg的path生成有问题？</p>
+<li><p>test_case_brs1_f-A.c 为什么会FAIL，理论上.ll：L71处的跳转不应实现<br>  那么，是否是cfg的path生成有问题？<br>（已解决，因为N可能&lt;0）</p>
 </li>
-<li><p>为什么int类型数组的测试样例总是报告minisat.solver.FALSE，minisat.solve做了什么？</p>
+<li><p>为什么int类型数组的测试样例总是报告minisat.solver.FALSE，minisat.solve做了什么？<br>TODO <strong>未解决！</strong></p>
 </li>
 </ul>
-<p>接下来的任务：</p>
+<h2 id="2022-03-29"><a href="#2022-03-29" class="headerlink" title="2022-03-29"></a>2022-03-29</h2><p>阅读了instParser的parseCall中的malloc部分处理代码，该部分代码将IR表达成Constraint。</p>
+<p>预备向上报告：</p>
 <ul>
+<li>BVVerifier::mkMallocConstraint中heapMemory的memSize应该直接取llvm ir中call malloc的参数吗？参数的单位是字节，但这里似乎不需要字节。</li>
+</ul>
+<p>遇到的问题和意向解决方法：</p>
+<ul>
+<li>heapMemory::memSize为什么需要是Variable*类型，这里似乎用uint32_t就够了？<br>(已解决：因为这是个表达式啊)</li>
+</ul>
+<h2 id="TO-DO"><a href="#TO-DO" class="headerlink" title="TO DO"></a>TO DO</h2><ul>
 <li>再写几个测试样例（最好包含 FAIL 和 SUCCEED，样例test_case_brs1_f-B.c实现了触发assert ArrayIndex bound）</li>
-<li>malloc时对堆区的建模(InstParser)</li>
-<li>reorderPath（在BoundedVerifier:L288被引用）是做什么用的</li>
-<li>solveSAT是基于路径遍历的吗</li>
-<li>z3的表达式类型</li>
+<li>malloc时对堆区的建模(InstParser)<br><em>「批注」</em>实际上，是要看InstParser和mkMallocConstraint，况且目前的代码仅仅对malloc(常数)的情况做了建模，真正艰巨的任务还没有完成。</li>
+<li>指针相关验证的学术界方法(看论文)（理解PPT创新点与难点1.2.）关键点：当malloc参数是变量时，如何建模？如何让heapMemory::memSize的类型为Variable*这个伏笔真正发挥作用？</li>
+<li>z3的表达式类型（目的是理解PPT创新点与难点3.）</li>
 <li>llvm IR</li>
-<li>指针相关验证的学术界方法(看论文)</li>
+<li>solveSAT是基于路径遍历的吗</li>
+<li>reorderPath（在BoundedVerifier:L288被引用）是做什么用的</li>
 </ul>
 
       
