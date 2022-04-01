@@ -180,7 +180,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-03-29 22:00:29" itemprop="dateModified" datetime="2022-03-29T22:00:29+08:00">2022-03-29</time>
+                <time title="Modified: 2022-04-01 17:21:48" itemprop="dateModified" datetime="2022-04-01T17:21:48+08:00">2022-04-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -257,7 +257,16 @@
 <ul>
 <li>heapMemory::memSize为什么需要是Variable*类型，这里似乎用uint32_t就够了？<br>(已解决：因为这是个表达式啊)</li>
 </ul>
+<h2 id="2022-04-01"><a href="#2022-04-01" class="headerlink" title="2022-04-01"></a>2022-04-01</h2><p>parseAllocaInst部分FP相关编码。<br>mkGetPtrExpr函数var1.size==1时FP相关编码。<br>mkMemStoreConstraint中FP相关代码修改。<br>测试用例data_structures_set_malloc_f.c通过（获得SUCCESS和FAIL的结果）。</p>
+<p>预备向上报告：</p>
+<ul>
+<li><p>为什么mkGetPtrExpr函数var1.size==1时FP相关编码和INT部分完全一致即可？如若如此，为什么要分类？</p>
+</li>
+<li><p>memmory check时alloc指令未实现？</p>
+</li>
+</ul>
 <h2 id="TO-DO"><a href="#TO-DO" class="headerlink" title="TO DO"></a>TO DO</h2><ul>
+<li>FP相关代码有些混乱，找到所有stupidpanther提交的代码，逐一落实代码的作用，判断写的对不对</li>
 <li>再写几个测试样例（最好包含 FAIL 和 SUCCEED，样例test_case_brs1_f-B.c实现了触发assert ArrayIndex bound）</li>
 <li>malloc时对堆区的建模(InstParser)<br><em>「批注」</em>实际上，是要看InstParser和mkMallocConstraint，况且目前的代码仅仅对malloc(常数)的情况做了建模，真正艰巨的任务还没有完成。</li>
 <li>指针相关验证的学术界方法(看论文)（理解PPT创新点与难点1.2.）关键点：当malloc参数是变量时，如何建模？如何让heapMemory::memSize的类型为Variable*这个伏笔真正发挥作用？<br><em>「批注」</em>可以找程序堆建模的文献的参考文献</li>
