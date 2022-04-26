@@ -180,7 +180,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-04-26 17:32:54" itemprop="dateModified" datetime="2022-04-26T17:32:54+08:00">2022-04-26</time>
+                <time title="Modified: 2022-04-26 18:03:04" itemprop="dateModified" datetime="2022-04-26T18:03:04+08:00">2022-04-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,6 +269,8 @@
 <h2 id="2022-04-26"><a href="#2022-04-26" class="headerlink" title="2022-04-26"></a>2022-04-26</h2><p>(其实4月初也有通过测试样例 <code>data_structures_set_malloc.c</code> 和 <code>data_structures_set_malloc_f.c</code>, 以及提交中期报告啊…)</p>
 <p>在更新了学长的最新提交后, 仍确认data_structures_set_malloc.c, data_structures_set_malloc_f.c通过</p>
 <h2 id="TO-DO"><a href="#TO-DO" class="headerlink" title="TO DO"></a>TO DO</h2><ul>
+<li>自己实现一遍 malloc</li>
+<li>store遇到循环怎么办, 先找到一个本不应fail却fail了的测试样例(注意应查看.ll源码, 确认真的path中有循环), 再编码解决问题</li>
 <li>FP相关代码有些混乱，找到所有stupidpanther提交的代码，逐一落实代码的作用，判断写的对不对，查看04-01发现的bug情况。</li>
 <li>再写几个测试样例（最好包含 FAIL 和 SUCCEED，样例test_case_brs1_f-B.c实现了触发assert ArrayIndex bound）</li>
 <li>指针相关验证的学术界方法(看论文)（理解PPT创新点与难点1.2.）关键点：当malloc参数是变量时，如何建模？如何让heapMemory::memSize的类型为Variable*这个伏笔真正发挥作用？<br><em>「批注」</em>可以找程序堆建模的文献的参考文献</li>
