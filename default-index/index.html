@@ -180,7 +180,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-01 14:00:31" itemprop="dateModified" datetime="2022-05-01T14:00:31+08:00">2022-05-01</time>
+                <time title="Modified: 2022-05-01 16:36:31" itemprop="dateModified" datetime="2022-05-01T16:36:31+08:00">2022-05-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,9 +269,9 @@
 <h2 id="2022-04-26"><a href="#2022-04-26" class="headerlink" title="2022-04-26"></a>2022-04-26</h2><p>(其实4月初也有通过测试样例 <code>data_structures_set_malloc.c</code> 和 <code>data_structures_set_malloc_f.c</code>, 以及提交中期报告啊…)</p>
 <p>在更新了学长的最新提交后, 仍确认data_structures_set_malloc.c, data_structures_set_malloc_f.c通过</p>
 <h2 id="2022-05-01"><a href="#2022-05-01" class="headerlink" title="2022-05-01"></a>2022-05-01</h2><p>(躺平了3个星期之后终于开始干活了…)</p>
-<p>自己实现一遍malloc, 方法是解析函数my_malloc, 测试brick是否工作正常. 测试样例test_my_malloc/my_malloc_i.c和test_my_malloc/my_malloc_f.c由data_structures_set_malloc.c和data_structures_set_malloc_f.c修改而来.</p>
+<p>自己实现一遍malloc, 方法是解析函数my_malloc, 测试brick是否工作正常. 测试样例test_my_malloc/my_malloc_i.c和test_my_malloc/my_malloc_f.c由data_structures_set_malloc.c和data_structures_set_malloc_f.c修改而来. 未实现功能时, 运行测试样例产生段错误; 完成框架代码后(8个文件, 27行代码), 运行测试样例仍产生段错误; 完成全部代码(8个文件, 133行代码), 通过测试样例.</p>
+<p>store遇到循环时的处理, 尚未发现可以误触FAIL的测试样例, 没有查看.ll源码看是否有循环. 认为: 看是否真的重复生成了store相关的约束应该在生成约束时打印z3表达式, 然后比对是否存在如”x1==x2, x1==x3”的约束.</p>
 <h2 id="TO-DO"><a href="#TO-DO" class="headerlink" title="TO DO"></a>TO DO</h2><ul>
-<li>自己实现一遍 malloc</li>
 <li>store遇到循环怎么办, 先找到一个本不应fail却fail了的测试样例(注意应查看.ll源码, 确认真的path中有循环), 再编码解决问题</li>
 <li>FP相关代码有些混乱，找到所有stupidpanther提交的代码，逐一落实代码的作用，判断写的对不对，查看04-01发现的bug情况。</li>
 <li>再写几个测试样例（最好包含 FAIL 和 SUCCEED，样例test_case_brs1_f-B.c实现了触发assert ArrayIndex bound）</li>
