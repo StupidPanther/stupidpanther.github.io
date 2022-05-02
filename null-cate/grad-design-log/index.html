@@ -27,7 +27,7 @@
 <meta property="og:description" content="2022-03-25完成 getArrayElementExpr() mkStoreConstraint() mkLoadConstraint() 的FP相关编码. 目前的问题:   assert(L179) fail : arrayIndex超标. 2个疑惑: 为什么index的单位似乎是byte, 而不是sizeof(float). 为什么index会越界. 测试样例int和float的表现不">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-25T13:11:36.000Z">
-<meta property="article:modified_time" content="2022-05-02T07:28:59.287Z">
+<meta property="article:modified_time" content="2022-05-02T09:19:26.930Z">
 <meta property="article:author" content="stupidpanther">
 <meta name="twitter:card" content="summary">
 
@@ -184,7 +184,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-02 15:28:59" itemprop="dateModified" datetime="2022-05-02T15:28:59+08:00">2022-05-02</time>
+                <time title="Modified: 2022-05-02 17:19:26" itemprop="dateModified" datetime="2022-05-02T17:19:26+08:00">2022-05-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -277,6 +277,8 @@
 <p>store遇到循环时的处理, 尚未发现可以误触FAIL的测试样例, 没有查看.ll源码看是否有循环. 认为: 看是否真的重复生成了store相关的约束应该在生成约束时打印z3表达式, 然后比对是否存在如”x1==x2, x1==x3”的约束.</p>
 <h2 id="2022-05-02"><a href="#2022-05-02" class="headerlink" title="2022-05-02"></a>2022-05-02</h2><p>找store遇到循环时的样例，需要兼顾“llvm ir中编译出malloc函数”，“对数组元素的操作在llvm ir中编译出store指令”。但目前未找到遇到循环的样例。loop_3.c样例中有store操作（offset已知）出现循环，但exprl和exprr均为相同的变量，此处可以深挖，即exprr是如何来的，其来源可能是随机的。loop_3.c加了一个大循环，似乎失败。尝试在data_structures_set_malloc.c修改得到测试样例，失败，原因是原样例过于复杂，不易判断是否对相同数组元素进行了多次store操作，但是后来发现还是可以进行下去的。</p>
 <p>loop_4.c突破：<code>main.%0    Pointer = store main.call23    Int</code>约束出现两次，其中call23均为“=NONDET”，但生成z3约束时均为<code>exprl: |Brick.ARRAY.HEAPMEM:0.element:0| exprr: main.call23_0</code>，需要探究，为何右侧约束名字都一致，是不是生成z3约束时细节有问题，即求exprr时，是否由于名字相同，直接去z3表达式数组中去找了。这种情况对于store虽然没错，但别的操作会不会有问题？能否找到反例？</p>
+<p>loop_5.c找到一个不相关的bug：如果将SIZE改为100会报SUCCESSFUL但实际应为FAILED，后续应下载最新brick代码，编译后测试该bug是否还存在，避免是本地分支错误修改代码所致。又发现一个bug：写在loop_5_bug.c里了。loop_5_bug_2.c在提交40a88ea1上关闭memoryBoundCheck后FAILED，但我认为应该是SUCCESSFUL的。</p>
+<p>目前的计划是在历史某个main的提交上找到一个没有store循环操作时表现正常的样例，然后测试其在有store循环时是否产生FAILED或者程序运行错误等，若是SUCCESSFUL，则要观察是否是假SUCCESSFUL(即找出报SUCCESSFUL的原因，是真的考虑到了store操作可能在循环中的情况，还是没有考虑到这种情况，但巧合报SUCCESSFUL了)。如果这条路走不通，也可以先实现处理store在循环中的代码，至于测试样例，后面再说。</p>
 <h2 id="TO-DO"><a href="#TO-DO" class="headerlink" title="TO DO"></a>TO DO</h2><ul>
 <li>store遇到循环怎么办, 先找到一个本不应fail却fail了的测试样例(注意应查看.ll源码, 确认真的path中有循环), 再编码解决问题</li>
 <li>FP相关代码有些混乱，找到所有stupidpanther提交的代码，逐一落实代码的作用，判断写的对不对，查看04-01发现的bug情况。</li>
