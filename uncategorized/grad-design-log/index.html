@@ -22,16 +22,16 @@
   <meta name="description" content="2022-03-25完成 getArrayElementExpr() mkStoreConstraint() mkLoadConstraint() 的FP相关编码. 目前的问题:   assert(L179) fail : arrayIndex超标. 2个疑惑: 为什么index的单位似乎是byte, 而不是sizeof(float). 为什么index会越界. 测试样例int和float的表现不">
 <meta property="og:type" content="article">
 <meta property="og:title" content="毕设日志">
-<meta property="og:url" content="https://liu-yx.cn/null-cate/grad-design-log/index.html">
+<meta property="og:url" content="https://liu-yx.cn/uncategorized/grad-design-log/index.html">
 <meta property="og:site_name" content="Stupidpanther&#39;s Blog">
 <meta property="og:description" content="2022-03-25完成 getArrayElementExpr() mkStoreConstraint() mkLoadConstraint() 的FP相关编码. 目前的问题:   assert(L179) fail : arrayIndex超标. 2个疑惑: 为什么index的单位似乎是byte, 而不是sizeof(float). 为什么index会越界. 测试样例int和float的表现不">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-25T13:11:36.000Z">
-<meta property="article:modified_time" content="2022-05-03T07:38:20.182Z">
+<meta property="article:modified_time" content="2022-05-05T11:59:46.866Z">
 <meta property="article:author" content="stupidpanther">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://liu-yx.cn/null-cate/grad-design-log/">
+<link rel="canonical" href="https://liu-yx.cn/uncategorized/grad-design-log/">
 
 
 <script id="page-configurations">
@@ -154,7 +154,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://liu-yx.cn/null-cate/grad-design-log/">
+    <link itemprop="mainEntityOfPage" href="https://liu-yx.cn/uncategorized/grad-design-log/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -184,17 +184,8 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-05-03 15:38:20" itemprop="dateModified" datetime="2022-05-03T15:38:20+08:00">2022-05-03</time>
+                <time title="Modified: 2022-05-05 19:59:46" itemprop="dateModified" datetime="2022-05-05T19:59:46+08:00">2022-05-05</time>
               </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/null-cate/" itemprop="url" rel="index"><span itemprop="name">null-cate</span></a>
-                </span>
-            </span>
 
           
 
@@ -281,6 +272,8 @@
 <p>目前的计划是在历史某个main的提交上找到一个没有store循环操作时表现正常的样例，然后测试其在有store循环时是否产生FAILED或者程序运行错误等，若是SUCCESSFUL，则要观察是否是假SUCCESSFUL(即找出报SUCCESSFUL的原因，是真的考虑到了store操作可能在循环中的情况，还是没有考虑到这种情况，但巧合报SUCCESSFUL了)。如果这条路走不通，也可以先实现处理store在循环中的代码，至于测试样例，后面再说。</p>
 <h2 id="2022-05-03"><a href="#2022-05-03" class="headerlink" title="2022-05-03"></a>2022-05-03</h2><p>按照自己的理解实现了heapMemory部分的循环中出现store指令的brick代码，但苦于找不到测试样例，这部分准备求助学长。</p>
 <p>需要写论文了，先写大纲，然后写文献综述。</p>
+<h2 id="2022-05-04"><a href="#2022-05-04" class="headerlink" title="2022-05-04"></a>2022-05-04</h2><p>去网上找论文。</p>
+<p>初始化了论文模板NJU Thesis，写了论文大纲。</p>
 <h2 id="TO-DO"><a href="#TO-DO" class="headerlink" title="TO DO"></a>TO DO</h2><ul>
 <li>写论文</li>
 <li>store遇到循环怎么办, 先找到一个本不应fail却fail了的测试样例(注意应查看.ll源码, 确认真的path中有循环), 再编码解决问题</li>
@@ -310,7 +303,10 @@
     <a href="/blogs/vscode-cppext-cout/" rel="prev" title="使用VSCode编辑C++代码cout报错问题解决">
       <i class="fa fa-chevron-left"></i> 使用VSCode编辑C++代码cout报错问题解决
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/uncategorized/compiler-lab-3-testscript/" rel="next" title="compiler-lab-3-testscript">
+      compiler-lab-3-testscript <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -369,7 +365,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-03-25"><span class="nav-number">1.</span> <span class="nav-text">2022-03-25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-03-28"><span class="nav-number">2.</span> <span class="nav-text">2022-03-28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-03-29"><span class="nav-number">3.</span> <span class="nav-text">2022-03-29</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-04-01"><span class="nav-number">4.</span> <span class="nav-text">2022-04-01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-04-26"><span class="nav-number">5.</span> <span class="nav-text">2022-04-26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-05-01"><span class="nav-number">6.</span> <span class="nav-text">2022-05-01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-05-02"><span class="nav-number">7.</span> <span class="nav-text">2022-05-02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-05-03"><span class="nav-number">8.</span> <span class="nav-text">2022-05-03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TO-DO"><span class="nav-number">9.</span> <span class="nav-text">TO DO</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-03-25"><span class="nav-number">1.</span> <span class="nav-text">2022-03-25</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-03-28"><span class="nav-number">2.</span> <span class="nav-text">2022-03-28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-03-29"><span class="nav-number">3.</span> <span class="nav-text">2022-03-29</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-04-01"><span class="nav-number">4.</span> <span class="nav-text">2022-04-01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-04-26"><span class="nav-number">5.</span> <span class="nav-text">2022-04-26</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-05-01"><span class="nav-number">6.</span> <span class="nav-text">2022-05-01</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-05-02"><span class="nav-number">7.</span> <span class="nav-text">2022-05-02</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-05-03"><span class="nav-number">8.</span> <span class="nav-text">2022-05-03</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2022-05-04"><span class="nav-number">9.</span> <span class="nav-text">2022-05-04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TO-DO"><span class="nav-number">10.</span> <span class="nav-text">TO DO</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -384,12 +380,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">categories</span>
       </div>
   </nav>
